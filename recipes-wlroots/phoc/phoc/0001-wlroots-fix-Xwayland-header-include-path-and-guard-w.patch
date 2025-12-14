@@ -1,0 +1,77 @@
+From c83beee32c3523b8c36d98cac60fb6dd0d71f3c9 Mon Sep 17 00:00:00 2001
+From: fakeapate <fakeapate@pm.me>
+Date: Sun, 14 Dec 2025 21:53:14 +0000
+Subject: [PATCH] wlroots: fix Xwayland header include path and guard with
+ WLR_HAS_XWAYLAND
+
+---
+ src/server.c           | 5 ++++-
+ src/xdg-surface.c      | 5 ++++-
+ src/xwayland-surface.c | 5 ++++-
+ src/xwayland-surface.h | 5 ++++-
+ 4 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/src/server.c b/src/server.c
+index 5bc5b1c..afb0101 100644
+--- a/src/server.c
++++ b/src/server.c
+@@ -19,7 +19,10 @@
+ #include <wlr/types/wlr_drm.h>
+ #include <wlr/types/wlr_linux_dmabuf_v1.h>
+ #include <wlr/types/wlr_security_context_v1.h>
+-#include <wlr/xwayland.h>
++#include <wlr/config.h>
++#if WLR_HAS_XWAYLAND
++#include <wlr/xwayland/xwayland.h>
++#endif
+ #include <wlr/xwayland/shell.h>
+ 
+ #include <errno.h>
+diff --git a/src/xdg-surface.c b/src/xdg-surface.c
+index 0fac9c1..c9592eb 100644
+--- a/src/xdg-surface.c
++++ b/src/xdg-surface.c
+@@ -20,7 +20,10 @@
+ #include <wlr/types/wlr_xdg_shell.h>
+ #include <wlr/util/edges.h>
+ 
+-#include <wlr/xwayland.h>
++#include <wlr/config.h>
++#if WLR_HAS_XWAYLAND
++#include <wlr/xwayland/xwayland.h>
++#endif
+ #include <xcb/xproto.h>
+ 
+ enum {
+diff --git a/src/xwayland-surface.c b/src/xwayland-surface.c
+index 3fb6cb6..11b4b8f 100644
+--- a/src/xwayland-surface.c
++++ b/src/xwayland-surface.c
+@@ -15,7 +15,10 @@
+ #include "view-private.h"
+ #include "xwayland-surface.h"
+ 
+-#include <wlr/xwayland.h>
++#include <wlr/config.h>
++#if WLR_HAS_XWAYLAND
++#include <wlr/xwayland/xwayland.h>
++#endif
+ 
+ enum {
+   PROP_0,
+diff --git a/src/xwayland-surface.h b/src/xwayland-surface.h
+index d9fc17a..74e0b3e 100644
+--- a/src/xwayland-surface.h
++++ b/src/xwayland-surface.h
+@@ -10,7 +10,10 @@
+ 
+ #include "view.h"
+ 
+-#include <wlr/xwayland.h>
++#include <wlr/config.h>
++#if WLR_HAS_XWAYLAND
++#include <wlr/xwayland/xwayland.h>
++#endif
+ #include <xcb/xproto.h>
+ 
+ #include <glib-object.h>

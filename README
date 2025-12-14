@@ -1,0 +1,16 @@
+This README file contains information on the contents of the meta-fakeapate-cm4 layer.
+
+Please see the corresponding sections below for details.
+
+# Dependencies
+
+URI: https://codeberg.org/flk/meta-wayland.git
+branch: scarthgap
+
+# Table of Contents
+
+I. Adding the meta-fakeapate-cm4 layer to your build
+
+# I. Adding the meta-fakeapate-cm4 layer to your build
+
+Run 'bitbake-layers add-layer meta-fakeapate-cm4'
