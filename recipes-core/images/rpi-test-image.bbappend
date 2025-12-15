@@ -1,10 +1,10 @@
 
 
 IMAGE_INSTALL += "\
-  packagegroup-phone-base \
-  packagegroup-phone-network \
-  packagegroup-phone-power \
-  packagegroup-phone-ota \
-  packagegroup-phone-ui \
-  packagegroup-phone-firmware \
+  packagegroup-fcm4-base \
+  packagegroup-fcm4-network \
+  packagegroup-fcm4-power \
+  packagegroup-fcm4-ota \
+  packagegroup-fcm4-ui \
+  packagegroup-fcm4-firmware \
 "
